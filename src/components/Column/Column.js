@@ -9,49 +9,51 @@ import Icon from '../Icon/Icon';
 
 class Column extends React.Component {
     state = {
-        cards: this.props.cards || [],
+      // eslint-disable-next-line react/prop-types
+      cards: this.props.cards || [],
     }
 
     static propTypes = {
-        title: PropTypes.string,
+      title: PropTypes.string,
     }
 
     addCard(title){
-        this.setState(state => (
+      this.setState(state => (
+        {
+          cards: [
+            ...state.cards,
             {
-                cards: [
-                    ...state.cards,
-                    {
-                        key: state.cards.length ? state.cards[state.cards.length-1].key+1 : 0,
-                        title,
-                    }
-                ]
-            }
-        ));
+              key: state.cards.length ? state.cards[state.cards.length-1].key+1 : 0,
+              title,
+            },
+          ],
+        }
+      ));
     }
 
     render() {
-        console.log(this.state.cards.map(({key, ...cardProps}) =>(
-            <Card key={{key}} {...cardProps} />
-        )))
-        return (
-            <section className={styles.component}>
-                <h3 className={styles.title}>
-                    {this.props.title}
-                    <span className={styles.icon}>
-                        <Icon name={this.props.icon} />
-                    </span>
-                </h3>
-                <div>
-                    {this.state.cards.map(({key, ...cardProps}) =>(
-                        <Card key={key} {...cardProps} />
-                    ))}
-                </div>
-                <div>
-                    <Creator text={settings.cardCreatorText} action={title => this.addCard(title)} />
-                </div>
-            </section>
-        )
+      console.log(this.state.cards.map(({key, ...cardProps}) =>(
+        <Card key={{key}} {...cardProps} />
+      )));
+      return (
+        <section className={styles.component}>
+          <h3 className={styles.title}>
+            {this.props.title}
+            <span className={styles.icon}>
+              {/* eslint-disable-next-line react/prop-types */}
+              <Icon name={this.props.icon} />
+            </span>
+          </h3>
+          <div>
+            {this.state.cards.map(({key, ...cardProps}) =>(
+              <Card key={key} {...cardProps} />
+            ))}
+          </div>
+          <div>
+            <Creator text={settings.cardCreatorText} action={title => this.addCard(title)} />
+          </div>
+        </section>
+      );
     }
 }
 
