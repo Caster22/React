@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './app.scss';
+import styles from './App.scss';
 import List from '../List/ListContainer';
 import PropTypes from 'prop-types';
 //import {listData} from '../../data/dataStore';
