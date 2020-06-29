@@ -91,6 +91,18 @@ const lists = [
     description: 'Interesting things I want to check out!',
     image: 'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png',
   },
+  {
+    id: 'list-2',
+    title: 'Things I will do.. <sup>maybe...</sup>',
+    description: 'Something that catch my eye',
+    image: 'https://freepngimg.com/download/graphic_design/6-2-graphic-design-transparent.png',
+  },
+  {
+    id: 'list-3',
+    title: 'Things I will never touch... <sup>or maybe?...</sup>',
+    description: 'Something that catch my eye',
+    image: 'https://www.pngkey.com/png/full/152-1527338_szablon-kota-png-czarny-cat-silhouette-public-domain.png',
+  },
 ];
 
 const columns = [
