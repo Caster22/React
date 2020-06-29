@@ -32,8 +32,8 @@ class Search extends React.Component {
   }
 
   handleOK(){
+    // eslint-disable-next-line react/prop-types
     this.props.history.push(`/search/${this.state.value}`);
-    this.props.changeSearchString(this.state.value);
   }
 
   componentDidUpdate(prevProps){
