@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from '../Column/Column.scss';
+import styles from './SearchResult.scss';
 import PropTypes from 'prop-types';
 import Card from '../Card/Card';
-import Creator from '../Creator/Creator';
+//import Creator from '../Creator/Creator';
 import {settings} from '../../data/dataStore';
 import Icon from '../Icon/Icon';
 import Container from '../Container/Container';
@@ -20,7 +20,7 @@ class SearchResults extends React.Component {
 
   render() {
     // eslint-disable-next-line react/prop-types
-    const {title, icon, cards, addCard} = this.props;
+    const {title, icon, cards /* addCard */} = this.props;
     return (
       <Container>
         <section className={styles.component}>
@@ -36,9 +36,9 @@ class SearchResults extends React.Component {
               <Card key={cardData.id} {...cardData} />
             ))}
           </div>
-          <div>
+          {/*<div>
             <Creator text={settings.cardCreatorText} action={addCard} />
-          </div>
+          </div>*/}
         </section>
       </Container>
     );
