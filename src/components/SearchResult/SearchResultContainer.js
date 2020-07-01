@@ -1,27 +1,19 @@
 import {connect} from 'react-redux';
 import SearchResult from './SearchResults';
+import { createAction_changeSearchString } from '../../redux/searchStringRedux.js';
 import {getCardsFiltered /* createActionAddCard */} from '../../redux/cardRedux';
 
 /*const mapStateToProps = (state, props) => ({
   cards: getCardsFiltered(state, props.id),
 });*/
 
-const mapStateToProps = (state, props) => {
-  const searchString = props.match.params.searchString;
-  const filteredCards = state.cards.filter(card => card.title == searchString);
-  const cardsParams = filteredCards[0] || {};
+const mapStateToProps = (state, props) => ({
+  cards: getCardsFiltered(state, props.match.params.searchString),
+});
 
-  return {
-    ...cardsParams,
-    cards: getCardsFiltered(state, props.searchString),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  changeSearchString: (newSearchString) =>
+    dispatch(createAction_changeSearchString(newSearchString)),
+});
 
-/*const mapDispatchToProps = (dispatch, props) => ({
-  addCard: title => dispatch(createActionAddCard({
-    columnId: props.id,
-    title,
-  })),
-});*/
-
-export default connect(mapStateToProps /* mapDispatchToProps */)(SearchResult);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResult);
